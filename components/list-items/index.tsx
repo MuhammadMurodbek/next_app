@@ -1,5 +1,5 @@
 import Avatar from "../avatar";
-export default function ListItems() {
+export default function ListItems({ data }: { data: any }) {
   return (
     <>
       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -18,16 +18,18 @@ export default function ListItems() {
             }
           />
           <div className="pl-3">
-            <div className="text-base font-semibold">Neil Sims</div>
+            <div className="text-base font-semibold">
+              {data?.full_name || "no data"}
+            </div>
             <div className="font-normal text-gray-500">
-              neil.sims@flowbite.com
+              {data?.mail || "no data"}
             </div>
           </div>
         </th>
-        <td className="px-6 py-4">React Developer</td>
+        <td className="px-6 py-4">{data?.organization || "no data"}</td>
         <td className="px-6 py-4">
           <div className="flex items-center">
-            <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
+            <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
             Online
           </div>
         </td>
