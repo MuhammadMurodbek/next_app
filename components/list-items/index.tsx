@@ -35,10 +35,10 @@ export default function ListItems({ data }: { data: any }) {
         </td>
         <td className="px-6 py-4">
           <a
-            href="#"
+            href={`/clients/${data?.id}`}
             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
           >
-            Edit user
+            Read more..
           </a>
         </td>
       </tr>

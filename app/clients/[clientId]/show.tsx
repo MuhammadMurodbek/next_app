@@ -1,4 +1,4 @@
-export default function ClientPage() {
+export default function ShowClient({ data }: { data: any }) {
   return (
     <div className="p-16 -mt-14">
       <div className="p-8 bg-white shadow mt-24">
@@ -43,29 +43,21 @@ export default function ClientPage() {
         </div>
         <div className="mt-20 text-center border-b pb-12">
           <h1 className="text-4xl font-medium text-gray-700">
-            Jessica Jones, <span className="font-light text-gray-500">27</span>
+            {data?.full_name}{" "}
+            <span className="font-light text-gray-500">22</span>
           </h1>
           <p className="font-light text-gray-600 mt-3">
-            <strong>Contact: </strong>accordion@gmail.com
+            <strong>Contact: </strong>
+            {data?.mail}
           </p>
           <p className="mt-8 text-gray-500">
-            <strong>Organization:</strong> Organization
+            <strong>Organization:</strong> {data?.organization}
           </p>
           <p className="mt-2 text-gray-500">
-            <strong>Assigned user:</strong> My profile
+            <strong>Assigned user:</strong> {data?.userId}
           </p>
         </div>
-        <div className="mt-12 flex flex-col justify-center">
-          <p className="text-gray-600 text-center font-light lg:px-16">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae,
-            quaerat, illum dignissimos ipsum tenetur, ullam placeat nisi rerum
-            molestias ex officia deleniti sequi unde doloribus consequuntur sint
-            similique sapiente deserunt laboriosam. Nulla provident totam nobis,
-            assumenda cumque officia iusto optio, maiores laudantium a, mollitia
-            tenetur illo aspernatur maxime consequatur excepturi voluptate
-            placeat? Error, enim ex porro esse vero eum doloremque!
-          </p>
-        </div>
+        <div className="mt-12 flex  justify-center">Status: {data?.status}</div>
       </div>
     </div>
   );

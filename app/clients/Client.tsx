@@ -1,8 +1,8 @@
 "use client";
 
-import Pagination from "../../components/pagination";
-import ListItems from "../../components/list-items";
-import ListColumn from "../../components/list-columns";
+import Pagination from "@app/components/pagination";
+import ListItems from "@app/components/list-items";
+import ListColumn from "@app/components/list-columns";
 import useColumns from "@app/store/table-columns";
 
 export default function Clients({ data }: { data: any }) {
