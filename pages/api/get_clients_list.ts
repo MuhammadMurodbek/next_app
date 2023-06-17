@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   try {
     const data = await prisma.clients.findMany();
-    return res.status(200).json(data);
+    return res.status(201).json(data);
   } catch (error) {
     res.status(403).json({ err: "Error has occured while fetching posts" });
   }

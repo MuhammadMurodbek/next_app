@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ShowClient({ data }: { data: any }) {
   return (
     <div className="p-16 -mt-14">
@@ -33,9 +35,13 @@ export default function ShowClient({ data }: { data: any }) {
             </div>
           </div>
           <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-            <button className="text-white px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+            <Link
+              href={`/clients/${data.id}/edit`}
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
               Edit
-            </button>
+            </Link>
+
             <button className="text-white px-4 uppercase rounded bg-red-700 hover:bg-red-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
               Delete
             </button>
