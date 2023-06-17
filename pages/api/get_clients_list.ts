@@ -6,9 +6,16 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const data = await prisma.clients.findMany();
-    return res.status(201).json(data);
+    const data = await prisma.$transaction([
+      prisma.clients.count(),
+      prisma.clients.findMany({
+        take: 10,
+        skip: (Number(req.query.skip) - 1) * 10 || 0,
+      }),
+    ]);
+
+    return res.status(200).json(data);
   } catch (error) {
-    res.status(403).json({ err: "Error has occured while fetching posts" });
+    res.status(403).json({ err: "Error has occured while fetching clients" });
   }
 }

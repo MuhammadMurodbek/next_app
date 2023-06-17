@@ -19,7 +19,6 @@ export default async function Edit({
   const data = await getPosts(params.clientId);
   return (
     <div>
-      <BreadCrumb />
       <EditClient data={data} />
     </div>
   );

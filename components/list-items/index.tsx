@@ -5,7 +5,7 @@ export default function ListItems({ data }: { data: any }) {
       <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
         <td className="w-4 p-4">
           <div className="flex items-center">
-            <div>12</div>
+            <div>{data.id}</div>
           </div>
         </td>
         <th
@@ -14,6 +14,7 @@ export default function ListItems({ data }: { data: any }) {
         >
           <Avatar
             url={
+              data.avatar ??
               "https://www.shutterstock.com/image-photo/expression-people-concept-smiling-man-260nw-672107746.jpg"
             }
           />
@@ -29,8 +30,14 @@ export default function ListItems({ data }: { data: any }) {
         <td className="px-6 py-4">{data?.organization || "no data"}</td>
         <td className="px-6 py-4">
           <div className="flex items-center">
-            <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>
-            Online
+            {data.status == "active" ? (
+              <div
+                className={`h-2.5 w-2.5 rounded-full bg-green-500 mr-2`}
+              ></div>
+            ) : (
+              <div className={`h-2.5 w-2.5 rounded-full bg-red-500 mr-2`}></div>
+            )}
+            {String(data.status).toUpperCase()}
           </div>
         </td>
         <td className="px-6 py-4">

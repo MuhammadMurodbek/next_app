@@ -1,4 +1,5 @@
 "use client";
+import BreadCrumb from "@app/components/breadcrumb";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -30,6 +31,13 @@ export default function EditClient({ data }: { data: any }) {
   };
   return (
     <>
+      <BreadCrumb
+        path={[
+          { name: "Clients", road: "/clients" },
+          { name: data.full_name, road: `/clients/${data.id}` },
+          { name: "Edit", road: "/clients/id/edit" },
+        ]}
+      />
       <section className="bg-white dark:bg-gray-900 ">
         <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
           <form onSubmit={handleSubmit(formSubmit)}>

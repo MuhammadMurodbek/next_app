@@ -11,17 +11,19 @@ model Users {
   id        Int       @id @default(autoincrement())
   full_name String
   avatar    String
+  createdAt DateTime  @default(now())
   Clients   Clients[]
 }
 
 model Clients {
-  id           Int    @id @default(autoincrement())
+  id           Int      @id @default(autoincrement())
   full_name    String
   avatar       String
   phone_number String
   mail         String
   organization String
-  status       String @default("active")
+  status       String   @default("active")
+  createdAt    DateTime @default(now())
   userId       Int
-  Users        Users  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  Users        Users    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

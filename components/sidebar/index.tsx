@@ -1,6 +1,7 @@
 "use client";
 import useSidebarRoutes from "@app/store/sidebar";
 import Nav from "@app/components/navs";
+import BreadCrumb from "../breadcrumb";
 type Props = {
   children: React.ReactNode;
 };
@@ -23,7 +24,10 @@ export default function Sidebar({ children }: Props) {
         </div>
       </aside>
       <div className="p-4 sm:ml-64">
-        <div className="p-4 mt-14">{children}</div>
+        <div className="p-4 mt-14">
+          {/* <BreadCrumb /> */}
+          {children}
+        </div>
       </div>
     </>
   );

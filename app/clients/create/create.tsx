@@ -1,4 +1,5 @@
 "use client";
+import BreadCrumb from "@app/components/breadcrumb";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
@@ -30,11 +31,14 @@ export default function ClientCreate() {
   };
   return (
     <>
-      <section className="bg-white dark:bg-gray-900 shadow-lg rounded-md">
+      <BreadCrumb
+        path={[
+          { name: "Clients", road: "/clients" },
+          { name: "Create", road: "/clients/create" },
+        ]}
+      />
+      <section className="bg-white dark:bg-gray-900 ">
         <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-          <h2 className="mb-7 text-md p-2 text-gray-500 text-center  border-solid border-primary border-b-2">
-            Add a new client
-          </h2>
           <form onSubmit={handleSubmit(formSubmit)}>
             <div className="w-full d-flex justify-content-center">
               <img
