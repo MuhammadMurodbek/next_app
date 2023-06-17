@@ -4,38 +4,23 @@ import Pagination from "@app/components/pagination";
 import ListItems from "@app/components/list-items";
 import ListColumn from "@app/components/list-columns";
 import useColumns from "@app/store/table-columns";
+import { useRouter } from "next/navigation";
 
 export default function Clients({ data }: { data: any }) {
   const { columns } = useColumns();
-
+  const router = useRouter();
+  console.log(data);
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <div>
             <button
-              id="dropdownActionButton"
-              data-dropdown-toggle="dropdownAction"
-              className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               type="button"
+              className="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+              onClick={() => router.push("/clients/create")}
             >
-              <span className="sr-only">Action button</span>
-              Action
-              <svg
-                className="w-3 h-3 ml-2"
-                aria-hidden="true"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
+              Add client
             </button>
             <div
               id="dropdownAction"

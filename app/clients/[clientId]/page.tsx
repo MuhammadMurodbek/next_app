@@ -2,7 +2,10 @@ import ShowClient from "./show";
 
 async function getPosts(clientId: string) {
   const res = await fetch(
-    `${process.env.BASE_URL}/api/show_client_info?clientId=${clientId}`
+    `${process.env.BASE_URL}/api/show_client_info?clientId=${clientId}`,
+    {
+      cache: "no-store",
+    }
   );
   return res.json();
 }

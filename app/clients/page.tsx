@@ -1,7 +1,9 @@
 import Clients from "./Client";
 
 async function getPosts() {
-  const res = await fetch(`${process.env.BASE_URL}/api/get_clients_list`);
+  const res = await fetch(`${process.env.BASE_URL}/api/get_clients_list`, {
+    cache: "no-store",
+  });
   return res.json();
 }
 
