@@ -7,11 +7,17 @@ export default async function handler(
 ) {
   if (req.method === "PUT") {
     try {
+      const { id, avatar, status, userId } = req.body;
       const data = await prisma.clients.update({
         where: {
           id: Number(req.body.id),
         },
-        data: req.body,
+        data: {
+          avatar: avatar,
+          id: id,
+          status: status,
+          userId: userId,
+        },
       });
       return res.status(201).json(data);
     } catch (err) {

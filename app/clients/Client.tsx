@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import Pagination from "@app/components/pagination";
 import ListItems from "@app/components/list-items";
 import ListColumn from "@app/components/list-columns";
@@ -11,11 +11,17 @@ import { queryMaker } from "@app/helpers/query-parser";
 
 export default function Clients({ data }: { data: any }) {
   const { columns } = useColumns();
+  const [status, setStatus] = useState(
+    Object.fromEntries(new URLSearchParams(window.location.search))?.status
+  );
   const router = useRouter();
   const handleChangeStatus = (e: any) => {
     const url = queryMaker(e.target.value);
     router.push(url);
   };
+  // useEffect(() => {
+  //   localStorage.setItem("user", data);
+  // }, []);
   return (
     <>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -35,6 +41,7 @@ export default function Clients({ data }: { data: any }) {
               name="status"
               className="bg-gray-50 mx-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={handleChangeStatus}
+              value={status || "all"}
             >
               <option value={"all"}>All statuses</option>
               <option value="active">Active</option>

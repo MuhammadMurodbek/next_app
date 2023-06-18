@@ -37,7 +37,6 @@ export default async function handler(
         include: {
           Users: true,
         },
-
         take: 10,
         skip: (Number(req.query.skip) - 1) * 10 || 0,
       }),

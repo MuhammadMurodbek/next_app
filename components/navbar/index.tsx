@@ -1,4 +1,12 @@
-export default function Navbar() {
+async function getUsers() {
+  const res = await fetch(`${process.env.BASE_URL}/api/get_users`, {
+    cache: "no-store",
+  });
+  return res.json();
+}
+export default async function Navbar() {
+  const data = await getUsers();
+  console.log(data);
   return (
     <>
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
@@ -40,7 +48,8 @@ export default function Navbar() {
             </div>
             <div className="flex items-center">
               <div className="flex items-center ml-3">
-                <div>
+                <div className="flex items-center gap-2">
+                  <div>{data[0]?.full_name}</div>
                   <button
                     type="button"
                     className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -50,7 +59,10 @@ export default function Navbar() {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="w-8 h-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      src={
+                        data[0]?.avatar ??
+                        "https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      }
                       alt="user photo"
                     />
                   </button>
