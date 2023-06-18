@@ -27,5 +27,6 @@ export default async function ClientsComponent({
     skip: searchParams.skip,
     status: searchParams.status,
   });
+
   return <Clients data={data} />;
 }
