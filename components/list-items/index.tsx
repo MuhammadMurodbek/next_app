@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Avatar from "../avatar";
 export default function ListItems({ data }: { data: any }) {
   return (
@@ -41,12 +42,12 @@ export default function ListItems({ data }: { data: any }) {
           </div>
         </td>
         <td className="px-6 py-4">
-          <a
+          <Link
             href={`/clients/${data?.id}`}
             className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
           >
             Read more..
-          </a>
+          </Link>
         </td>
       </tr>
     </>

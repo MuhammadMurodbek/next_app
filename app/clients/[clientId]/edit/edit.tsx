@@ -33,7 +33,7 @@ export default function EditClient({ data }: { data: any }) {
     <>
       <BreadCrumb
         path={[
-          { name: "Clients", road: "/clients" },
+          { name: "Clients", road: "/clients?skip=1&status=all" },
           { name: data.full_name, road: `/clients/${data.id}` },
           { name: "Edit", road: "/clients/id/edit" },
         ]}

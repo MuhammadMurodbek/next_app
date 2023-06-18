@@ -1,8 +1,14 @@
 import Clients from "./Client";
 
-async function getPosts(skip: string | string[] | undefined) {
+async function getPosts({
+  skip,
+  status,
+}: {
+  skip: string | string[] | undefined;
+  status: string | string[] | undefined;
+}) {
   const res = await fetch(
-    `${process.env.BASE_URL}/api/get_clients_list?skip=${skip}`,
+    `${process.env.BASE_URL}/api/get_clients_list?skip=${skip}&status=${status}`,
     {
       cache: "no-store",
     }
@@ -15,8 +21,11 @@ export default async function ClientsComponent({
   searchParams,
 }: {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: { [key: string]: string | string[] | Date | undefined | any };
 }) {
-  const data = await getPosts(searchParams.skip);
+  const data = await getPosts({
+    skip: searchParams.skip,
+    status: searchParams.status,
+  });
   return <Clients data={data} />;
 }

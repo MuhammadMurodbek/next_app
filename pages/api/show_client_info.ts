@@ -11,6 +11,9 @@ export default async function handler(
         where: {
           id: Number(req.query.clientId),
         },
+        include: {
+          Users: true,
+        },
       });
       return res.status(200).json(data);
     } catch (err) {
