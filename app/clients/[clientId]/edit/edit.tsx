@@ -22,13 +22,12 @@ export default function EditClient({ data }: { data: any }) {
         },
         body: JSON.stringify(data),
       });
+      toast.success("Successfully edited !");
       if (res.ok) {
         router.back();
         router.refresh();
-        toast.success("Successfully edited !");
       }
     } catch {
-      console.log("error");
       toast.warning("Something went wrong !");
     }
   };

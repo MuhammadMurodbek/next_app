@@ -16,6 +16,5 @@ export default async function ClientsComponent({
   params: { clientId: string };
 }) {
   const data = await getPosts(params.clientId);
-  // throw new Error("error handle");
   return <ShowClient data={data} />;
 }

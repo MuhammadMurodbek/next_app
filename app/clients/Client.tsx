@@ -11,12 +11,13 @@ import Toast from "@app/components/toastify";
 export default function Clients({ data }: { data: any }) {
   const { columns } = useColumns();
   const [status, setStatus] = useState(
-    Object.fromEntries(new URLSearchParams(window.location.search))?.status
+    Object.fromEntries(new URLSearchParams(window?.location?.search))?.status
   );
   const router = useRouter();
   const handleChangeStatus = (e: any) => {
     const url = queryMaker(e.target.value);
     router.push(url);
+    setStatus(e.target.value);
   };
   return (
     <>
