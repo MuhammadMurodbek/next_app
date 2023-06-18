@@ -1,10 +1,12 @@
 "use client";
 import BreadCrumb from "@app/components/breadcrumb";
+import Toast from "@app/components/toastify";
 import Link from "next/link";
 
 export default function ShowClient({ data }: { data: any }) {
   return (
     <>
+      <Toast />
       <BreadCrumb
         path={[
           { name: "Clients", road: "/clients?skip=1&status=all" },

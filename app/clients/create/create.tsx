@@ -1,4 +1,5 @@
 "use client";
+import { toast } from "react-toastify";
 import BreadCrumb from "@app/components/breadcrumb";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -24,16 +25,17 @@ export default function ClientCreate() {
       if (res.ok) {
         router.back();
         router.refresh();
+        toast.success("Successfully created !");
       }
     } catch {
-      console.log("error");
+      toast.warning("Something went wrong !");
     }
   };
   return (
     <>
       <BreadCrumb
         path={[
-          { name: "Clients", road: "/clients" },
+          { name: "Clients", road: "/clients?skip=1&status=all" },
           { name: "Create", road: "/clients/create" },
         ]}
       />

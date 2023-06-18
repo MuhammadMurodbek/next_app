@@ -2,6 +2,7 @@
 import BreadCrumb from "@app/components/breadcrumb";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export default function EditClient({ data }: { data: any }) {
   const router = useRouter();
@@ -24,9 +25,11 @@ export default function EditClient({ data }: { data: any }) {
       if (res.ok) {
         router.back();
         router.refresh();
+        toast.success("Successfully edited !");
       }
     } catch {
       console.log("error");
+      toast.warning("Something went wrong !");
     }
   };
   return (

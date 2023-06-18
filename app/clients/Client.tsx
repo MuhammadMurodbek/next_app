@@ -1,13 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Pagination from "@app/components/pagination";
 import ListItems from "@app/components/list-items";
 import ListColumn from "@app/components/list-columns";
 import useColumns from "@app/store/table-columns";
 import { useRouter } from "next/navigation";
-// import DatePicker from "@app/components/datepicker";
-// import Select from "@app/components/select";
 import { queryMaker } from "@app/helpers/query-parser";
+import Toast from "@app/components/toastify";
 
 export default function Clients({ data }: { data: any }) {
   const { columns } = useColumns();
@@ -19,11 +18,9 @@ export default function Clients({ data }: { data: any }) {
     const url = queryMaker(e.target.value);
     router.push(url);
   };
-  // useEffect(() => {
-  //   localStorage.setItem("user", data);
-  // }, []);
   return (
     <>
+      <Toast />
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <div>
