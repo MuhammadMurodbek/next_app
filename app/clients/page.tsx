@@ -17,15 +17,13 @@ async function getPosts({
 }
 
 export default async function ClientsComponent({
-  params,
   searchParams,
 }: {
-  params: { slug: string };
   searchParams: { [key: string]: string | string[] | Date | undefined | any };
 }) {
   const data = await getPosts({
-    skip: searchParams.skip,
-    status: searchParams.status,
+    skip: searchParams?.skip,
+    status: searchParams?.status,
   });
 
   return <Clients data={data} />;
