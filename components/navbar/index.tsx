@@ -15,13 +15,16 @@ export default async function Navbar() {
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start">
               <ToggleButton />
-              <a href="https://flowbite.com" className="flex ml-2 md:mr-24">
+              <a
+                href="https://github.com/MuhammadMurodbek/next_app.git"
+                className="flex ml-2 md:mr-24"
+              >
                 <img
-                  src="https://flowbite.com/docs/images/logo.svg"
+                  src="https://d2nir1j4sou8ez.cloudfront.net/wp-content/uploads/2021/12/nextjs-boilerplate-logo.png"
                   className="h-8 mr-3"
                   alt="FlowBite Logo"
                 />
-                <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
+                <span className="self-center text-sm font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
                   Next app
                 </span>
               </a>

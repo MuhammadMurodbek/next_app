@@ -26,6 +26,7 @@ export default function SetUser() {
         toast.success("Successfully created !");
         localStorage.setItem("user", JSON.stringify(await res.json()));
         router.push("/clients?skip=1&status=all");
+        router.refresh();
       }
     } catch {
       toast.warning("Something went wrong !");

@@ -9,7 +9,6 @@
     "start": "next start --port ${PORT-3000}",
     "lint": "next lint",
     "migrate:dev": "prisma migrate dev",
-    "migrate:deploy": "prisma migrate deploy",
     "migrate:status": "prisma migrate status",
     "generate": "prisma generate",
     "db:seed": "npx prisma db seed",
