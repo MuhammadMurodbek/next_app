@@ -7,7 +7,7 @@ export default async function handler(
 ) {
   try {
     const body = req.body;
-    const result = await prisma.clients.create({
+    const result = await prisma.users.create({
       data: body,
     });
 

@@ -1,4 +1,3 @@
-import { useDrawerStore } from "@app/store/drawer";
 import ToggleButton from "./toggle";
 
 async function getUsers() {
@@ -9,7 +8,6 @@ async function getUsers() {
 }
 export default async function Navbar() {
   const data = await getUsers();
-  // const { toggleDrawer } = useDrawerStore();
   return (
     <>
       <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">

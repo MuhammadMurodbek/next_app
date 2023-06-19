@@ -8,10 +8,10 @@ import { useRouter } from "next/navigation";
 import { queryMaker } from "@app/helpers/query-parser";
 import Toast from "@app/components/toastify";
 import { getWindowValues } from "@app/helpers/window-query";
+import { toast } from "react-toastify";
 
 export default function Clients({ data }: { data: any[] }) {
   const searchParams = getWindowValues();
-
   const { columns } = useColumns();
   const [status, setStatus] = useState<string>(searchParams?.status || "all");
   const router = useRouter();
@@ -20,6 +20,13 @@ export default function Clients({ data }: { data: any[] }) {
     router.push(url);
     setStatus(e.target.value);
   };
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    if (!user || !user.hasOwnProperty("id")) {
+      router.push("/user");
+      toast.warning("Please set user.");
+    }
+  }, []);
   return (
     <>
       <Toast />

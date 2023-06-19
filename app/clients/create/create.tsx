@@ -13,8 +13,13 @@ export default function ClientCreate() {
     formState: { errors },
   } = useForm();
   const formSubmit: SubmitHandler<FormValues | {}> = async (data: any) => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    if (!user.hasOwnProperty("id")) {
+      router.push("/user");
+      toast.warning("Please set user");
+    }
     data.avatar = "https://i.pravatar.cc/150?u=a042581ssd";
-    data.userId = 1;
+    data.userId = user.id;
     try {
       const res = await fetch("/api/add_client", {
         method: "POST",
