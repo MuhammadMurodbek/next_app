@@ -1,10 +1,11 @@
 "use client";
 import BreadCrumb from "@app/components/breadcrumb";
+import { ClientResponseType } from "@app/types/client-response-type";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-export default function EditClient({ data }: { data: any }) {
+export default function EditClient({ data }: { data: ClientResponseType }) {
   const router = useRouter();
   const {
     register,

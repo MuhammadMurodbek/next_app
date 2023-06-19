@@ -2,7 +2,8 @@
 import { toast } from "react-toastify";
 import BreadCrumb from "@app/components/breadcrumb";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { FormValues } from "@app/types/form-handler";
 
 export default function ClientCreate() {
   const router = useRouter();
@@ -11,7 +12,7 @@ export default function ClientCreate() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const formSubmit = async (data: any) => {
+  const formSubmit: SubmitHandler<FormValues | {}> = async (data: any) => {
     data.avatar = "https://i.pravatar.cc/150?u=a042581ssd";
     data.userId = 1;
     try {
@@ -64,13 +65,12 @@ export default function ClientCreate() {
                   placeholder="Type product name"
                   {...register("full_name", { required: true })}
                 />
-                {errors.full_name && (
+                {errors?.full_name && (
                   <p
                     id="outlined_error_help"
                     className="mt-2 text-xs text-red-600 dark:text-red-400"
                   >
-                    <span className="font-medium">Oh, snapp!</span> Some error
-                    message.
+                    Full name is a required field.
                   </p>
                 )}
               </div>
@@ -88,6 +88,14 @@ export default function ClientCreate() {
                   placeholder="Product brand"
                   {...register("organization", { required: true })}
                 />
+                {errors?.organization && (
+                  <p
+                    id="outlined_error_help"
+                    className="mt-2 text-xs text-red-600 dark:text-red-400"
+                  >
+                    Organization is a required field.
+                  </p>
+                )}
               </div>
               <div className="w-full">
                 <label
@@ -116,6 +124,14 @@ export default function ClientCreate() {
                     placeholder="name@nextjs.com"
                     {...register("mail", { required: true })}
                   />
+                  {errors?.mail && (
+                    <p
+                      id="outlined_error_help"
+                      className="mt-2 text-xs text-red-600 dark:text-red-400"
+                    >
+                      Mail is a required field.
+                    </p>
+                  )}
                 </div>
               </div>
               <div>
@@ -148,6 +164,14 @@ export default function ClientCreate() {
                   placeholder="+"
                   {...register("phone_number", { required: true })}
                 />
+                {errors?.phone_number && (
+                  <p
+                    id="outlined_error_help"
+                    className="mt-2 text-xs text-red-600 dark:text-red-400"
+                  >
+                    Phone number is a required field.
+                  </p>
+                )}
               </div>
             </div>
             <div className="text-right">

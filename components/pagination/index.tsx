@@ -1,10 +1,9 @@
+import { getWindowValues } from "@app/helpers/window-query";
 import Link from "next/link";
 
 export default function Pagination({ total }: { total: number }) {
   const pagingList = Array.from({ length: Math.ceil(total / 10) });
-  const pageIndex = Object.fromEntries(
-    new URLSearchParams(window.location.search)
-  );
+  const pageIndex = getWindowValues();
 
   return (
     <>

@@ -1,9 +1,11 @@
 "use client";
 import BreadCrumb from "@app/components/breadcrumb";
 import Toast from "@app/components/toastify";
+import { ClientResponseType } from "@app/types/client-response-type";
 import Link from "next/link";
 
-export default function ShowClient({ data }: { data: any }) {
+export default function ShowClient({ data }: { data: ClientResponseType }) {
+  console.log(data);
   return (
     <>
       <Toast />

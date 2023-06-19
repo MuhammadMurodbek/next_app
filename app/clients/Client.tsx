@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Pagination from "@app/components/pagination";
 import ListItems from "@app/components/list-items";
 import ListColumn from "@app/components/list-columns";
@@ -7,15 +7,16 @@ import useColumns from "@app/store/table-columns";
 import { useRouter } from "next/navigation";
 import { queryMaker } from "@app/helpers/query-parser";
 import Toast from "@app/components/toastify";
+import { getWindowValues } from "@app/helpers/window-query";
 
-export default function Clients({ data }: { data: any }) {
+export default function Clients({ data }: { data: any[] }) {
+  const searchParams = getWindowValues();
+
   const { columns } = useColumns();
-  const [status, setStatus] = useState(
-    Object.fromEntries(new URLSearchParams(window?.location?.search))?.status
-  );
+  const [status, setStatus] = useState<string>(searchParams?.status || "all");
   const router = useRouter();
-  const handleChangeStatus = (e: any) => {
-    const url = queryMaker(e.target.value);
+  const handleChangeStatus = (e: ChangeEvent<HTMLSelectElement>) => {
+    const url: any = queryMaker(e.target.value);
     router.push(url);
     setStatus(e.target.value);
   };
@@ -39,7 +40,7 @@ export default function Clients({ data }: { data: any }) {
               name="status"
               className="bg-gray-50 mx-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={handleChangeStatus}
-              value={status || "all"}
+              value={status}
             >
               <option value={"all"}>All statuses</option>
               <option value="active">Active</option>
@@ -62,7 +63,7 @@ export default function Clients({ data }: { data: any }) {
           </thead>
           <tbody>
             {data &&
-              data[1]?.map((item: any, index: number) => (
+              data[1]?.map((item: object, index: number) => (
                 <ListItems key={index} data={item} />
               ))}
           </tbody>
