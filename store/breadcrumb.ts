@@ -2,7 +2,7 @@ import { create } from "zustand";
 const useSidebarRoutes = create(() => ({
   routes: [
     { name: "Clients", path: "/clients" },
-    { name: "User", path: "/users" },
+    { name: "User", path: "/" },
   ],
   // changeRoutes: () =>
   //   set((state: { color: string }) => ({

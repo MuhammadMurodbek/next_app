@@ -1,10 +1,9 @@
-// import Clients from "./clients/page";
-"use client";
-
-import { useRouter } from "next/navigation";
+import SetUser from "./user/create";
 
 export default function Home() {
-  const router = useRouter();
-  router.push("/user");
-  return <main>s</main>;
+  return (
+    <main>
+      <SetUser />
+    </main>
+  );
 }

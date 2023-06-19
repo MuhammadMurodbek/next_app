@@ -15,7 +15,7 @@ export default function ClientCreate() {
   const formSubmit: SubmitHandler<FormValues | {}> = async (data: any) => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     if (!user.hasOwnProperty("id")) {
-      router.push("/user");
+      router.push("/");
       toast.warning("Please set user");
     }
     data.avatar = "https://i.pravatar.cc/150?u=a042581ssd";

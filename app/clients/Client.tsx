@@ -23,7 +23,7 @@ export default function Clients({ data }: { data: any[] }) {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "{}");
     if (!user || !user.hasOwnProperty("id")) {
-      router.push("/user");
+      router.push("/");
       toast.warning("Please set user.");
     }
   }, []);
