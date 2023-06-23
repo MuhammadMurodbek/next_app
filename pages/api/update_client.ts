@@ -13,10 +13,10 @@ export default async function handler(
           id: Number(req.body.id),
         },
         data: {
-          avatar: avatar,
+          // avatar: avatar,
           id: id,
           status: status,
-          userId: userId,
+          // userId: userId,
         },
       });
       return res.status(201).json(data);

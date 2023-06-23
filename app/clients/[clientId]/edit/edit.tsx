@@ -21,7 +21,12 @@ export default function EditClient({ data }: { data: ClientResponseType }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          // avatar: data.avatar,
+          id: data.id,
+          status: data.status,
+          // userId: data.userId,
+        }),
       });
       toast.success("Successfully edited !");
       if (res.ok) {
